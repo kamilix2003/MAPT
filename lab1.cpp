@@ -1,6 +1,3 @@
-# Lab1
-
-```cpp
 #include <iostream>
 using namespace std;
 #define GAP std::cout<< std::endl;
@@ -113,6 +110,5 @@ int main(void) {
     add_vec2.display(add_vec2);
     Vector add_vec3 = r3 + r3;
     add_vec3.display(add_vec3);
-    return EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }       
-```
