@@ -10,7 +10,7 @@ protected:
 public:
   Student(string sname_surname, unsigned int sid_number);
   string description = "student of group";
-  virtual void printDescription();
+  virtual void printDescription()=0;
   void printData(){
     cout << " Method printData of the Student class" << endl;
     cout << " name and surname " << name_surname << endl;
@@ -87,8 +87,8 @@ void Chairman::printDescription()
 }
 
 int main(){
-  Student stud("Jan Kowalski", 7);
-  stud.printDescription();
+  // Student stud("Jan Kowalski", 7);   ERROR! purely virtual method
+  // stud.printDescription();
   Chairman chair("Aleksandra Nowak", 999, "mail@nomail.dot");
   chair.Student::printDescription();
   chair.Chairman::printDescription();
