@@ -1,3 +1,36 @@
+# lab5
+[SOURCE](https://github.com/kamilix2003/MAPT)
+## ex 1
+```cpp
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+int main()
+{
+    int line_number = 0;
+    std::ifstream even_lines("./A02.txt");
+    std::ifstream odd_lines("./A01.txt");
+    std::ofstream output("merged.txt");
+    std::string even_line, odd_line;
+
+    if(even_lines.is_open() && odd_lines.is_open())
+    {
+        while(std::getline(even_lines, even_line) 
+            && std::getline(odd_lines,odd_line))
+        {
+            output << std::setfill('0') << std::setw(3) 
+                << line_number << " " << odd_line << std::endl
+                << std::setfill('0') << std::setw(3) 
+                << line_number+1 << " " << even_line << std::endl;
+            line_number+=2;
+        }
+    }
+
+}
+```
+## ex2
+```cpp
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -106,3 +139,24 @@ int main()
         <<sum_of_lev_distance(A0201,correct_lines) << "\n";
     
 }
+```
+```
+output:
+A03.txt vs merged.txt
+Est Europa nunc unita 4
+Et unita maneat 4
+Una in diversitate 4
+Pacem mundi augeat 4
+Semper regnant in Europa 4
+Fides et iustitia 4
+Et libertas populorum 4
+In maiore patria 4
+Cives, floreat Europa 4
+Opus magnum vocat vos 4
+Stellae signa sunt in caelo 4
+Aureae, quae iungant nos 4
+
+sum of the Levenshtein distances for A03.txt and merged.txt 48
+sum of the Levenshtein distances for A03.txt and A0102.txt 0
+sum of the Levenshtein distances for A03.txt and A0201.txt 204
+```
