@@ -4,7 +4,26 @@
 ```cpp
 #include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
+
+void replace_message(std::string *str)
+{
+  const string msg = "message";
+  const string real_msg = "real MESSAGE";
+  const string og_msg = "original MESSAGE";
+  size_t msg_index;
+  while(str->find(real_msg) < 9999)
+  {
+    msg_index = str->find(real_msg);
+    str->replace(msg_index, real_msg.size(), og_msg);
+  }
+  while(str->find(msg) < 9999)
+  {
+    msg_index = str->find(msg);
+    str->replace(msg_index, msg.size(), real_msg);
+  }
+}
 
 int main(){
   string txt;
@@ -22,7 +41,7 @@ int main(){
   cout << "Where is NULL???" << endl;
 	
   for (size_t i = 0; i < txt.size(); i++) {
-    cout << txt.at(i) << endl;
+    cout << txt.at(i) << " ";
     /* cout << txt[i] << endl;
        alternative, but using .at() is safer */
     /*  2.
@@ -30,6 +49,7 @@ int main(){
         .at() member function does range checking and throws an exception when you are trying to access nonexisting element.
     */
   }
+  std::cout<<"\n";
 	
   string txt2(" Find out what will happen with the message.");
   
@@ -41,7 +61,11 @@ int main(){
      "MESSAGE!!!");
   
   cout << txt << endl;
-	
+
+  replace_message(&txt);
+
+  cout << txt << "\n";
+
   return 0;
 }
 ```
@@ -51,23 +75,9 @@ output:
 !@#$% ???
 text size =16
 Where is NULL???
- 
-r
-e
-a
-l
- 
-m
-e
-s
-s
-a
-g
-e
-!
-!
-!
+  r e a l   m e s s a g e ! ! ! 
  real MESSAGE!!! Find out what will happen with the message. One more message?
+ original MESSAGE!!! Find out what will happen with the real MESSAGE. One more real MESSAGE?
 ```
 ## Exercise 2
 ```cpp
@@ -149,12 +159,12 @@ output:
 list with 10 letter in alphabetical order:
 a b c d e f g h i j 
 list with added 3 random letters:
-a b c d e f g h i j e e s 
+a b c d e f g h i j r h p 
 list with 2 erased elements
-a b c d e f i j e e s 
+a b c d e f i j r h p 
 capitilized 3 elements
-A B C d e f i j e e s 
+A B C d e f i j r h p 
 reversed list
-s e e j i f e d C B A 
+p h r j i f e d C B A 
 ```
 <center> generated with <a href="https://github.com/kamilix2003/report-baker">Report baker</a> </center>

@@ -1,12 +1,24 @@
 #include <string>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-void replace_message(std::string *str, std::string to_rep, std::string rep_be)
+void replace_message(std::string *str)
 {
-  size_t n;
-  n = find(to_rep);
-
+  const string msg = "message";
+  const string real_msg = "real MESSAGE";
+  const string og_msg = "original MESSAGE";
+  size_t msg_index;
+  while(str->find(real_msg) < 9999)
+  {
+    msg_index = str->find(real_msg);
+    str->replace(msg_index, real_msg.size(), og_msg);
+  }
+  while(str->find(msg) < 9999)
+  {
+    msg_index = str->find(msg);
+    str->replace(msg_index, msg.size(), real_msg);
+  }
 }
 
 int main(){
@@ -25,7 +37,7 @@ int main(){
   cout << "Where is NULL???" << endl;
 	
   for (size_t i = 0; i < txt.size(); i++) {
-    cout << txt.at(i) << endl;
+    cout << txt.at(i) << " ";
     /* cout << txt[i] << endl;
        alternative, but using .at() is safer */
     /*  2.
@@ -33,6 +45,7 @@ int main(){
         .at() member function does range checking and throws an exception when you are trying to access nonexisting element.
     */
   }
+  std::cout<<"\n";
 	
   string txt2(" Find out what will happen with the message.");
   
@@ -45,6 +58,9 @@ int main(){
   
   cout << txt << endl;
 
-  
+  replace_message(&txt);
+
+  cout << txt << "\n";
+
   return 0;
 }
