@@ -1,8 +1,8 @@
-clear all; close all;
+clear; close all;
 
-%t = -10:10;
+A = [[1, 3];
+     [3, 2]];
+B = [[5, 0];
+     [2, 2]];
 
-%plot(t, t.*t);
-
-[y, y_size] = first_function(5);
-plot(-y_size:y_size, y);
+[sum, diff, detA, detB] = first_function(A, B)

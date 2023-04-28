@@ -1,5 +1,6 @@
-function [y, size_of_y] = first_function(x)
-t = -x:x;
-for t
-size_of_y = 5;
+function [sum, diff, detA, detB] = first_function(A, B)
+sum = A + B;
+diff = abs(A-B);
+detA = det(A);
+detB = det(B);
 end
