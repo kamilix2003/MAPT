@@ -1,24 +1,28 @@
-%y1 (x) = x ^ 2 + 1
-%y2 (x) = x ^ 3 + x ^ 2 + x + 1
-%for x <-5, 5>,
-clear all; close all;
-t = -5:0.01:5;
-y1 = t.^2 +1;
-y2 = t.^3 + t.^2 + t +1;
-y1_indexes = 1:1:size(y1,2);
-figure (2)
-plot (y1, 'r.');
-hold on
-plot (y1, 'r-');
-plot (y1_indexes, y1, 'b*');
+%% main
+clear all; close all; clc;
 
-title ('Title of the chart, e.g. y_1 plotted with two types of tags')
-xlabel ('X-axis')
-ylabel ('Y-axis')
-grid on
-legend('y1', 'y2', 'y3')
+step = 0.01;
+x = -5:step:5;
+Y1 = 0*x;
+Y2 = 0*x;
 
-figure (3)
-plot(y1, 'b');
-hold on
-plot(y2, 'r');
+for i=1:size(x, 2)
+    [y1, y2] = exercise3_function1(x(i));
+    Y1(i) = y1;
+    Y2(i) = y2;
+end
+ figure(1);
+ subplot(2, 1, 1);
+ plot(x, Y1, x, Y2);
+ title('Ex1 graph');
+ xlabel ('X-axis')
+ ylabel ('Y-axis')
+ legend('y1', 'y2');
+ grid on;
+ subplot(2, 1, 2);
+ plot(x, Y1, x, Y2);
+ title('Ex2 graph');
+ xlabel ('X-axis')
+ ylabel ('Y-axis')
+ legend('y1', 'y2');
+ grid on;
